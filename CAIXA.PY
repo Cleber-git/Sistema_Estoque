@@ -116,3 +116,34 @@ def função(escolha):
             win.restore()
         botão_menu = ctk.CTkButton(terceira_janela, text='MENU', fg_color='transparent', hover_color='blue', command=menu)
         botão_menu.pack(padx=10, pady=10)
+
+
+frame = ctk.CTkFrame(primeira_janela, width=400, height=300, corner_radius=25).grid(row=0,column=0, padx=150, pady=100)
+label_menu = ctk.CTkLabel(primeira_janela, text='SUAS OPÇÕES')
+opção = ['Inserir Produto', 'Deletar Produto']
+menu = ctk.CTkOptionMenu(frame, values= opção, button_hover_color=('green'), command=função)
+menu.set('O QUE DESEJA FAZER?')
+menu.grid(row=0,column=0, padx=10, pady=10)
+
+
+
+
+# botão de sair da primeira pagina 
+
+def sair():
+    primeira_janela.quit()
+
+botão = ctk.CTkButton(frame, text='Sair', command=sair, hover_color=('red') )
+botão.grid(row=1, column=1, padx=20, pady=20)
+
+
+
+
+# segunga página:
+
+
+
+
+primeira_janela.mainloop()
+conexão.close()
+cursor.close()
