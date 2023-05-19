@@ -9,7 +9,7 @@ from pyautogui import hotkey
 conexão = mysql.connector.connect(
     user= 'root',
     host= 'localhost',
-    password='1928755c',
+    password='*******',
     database='cadastro'
 )
 
