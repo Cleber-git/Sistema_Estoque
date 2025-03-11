@@ -1,19 +1,19 @@
-import pygetwindow
+# import pygetwindow
 import mysql.connector
 import customtkinter as ctk
 from tkinter import messagebox
-from pyautogui import hotkey
+# from pyautogui import hotkey
 
 # conexão com o banco de dados
 
-conexão = mysql.connector.connect(
-    user= 'root',
-    host= 'localhost',
-    password='*******',
-    database='cadastro'
-)
+# conexão = mysql.connector.connect(
+#     user= 'root',
+#     host= 'localhost',
+#     password='*******',
+#     database='cadastro'
+# )
 
-cursor = conexão.cursor()
+# cursor = conexão.cursor()
 
 # primeira janela (MENU)
 
@@ -29,7 +29,7 @@ primeira_janela.title('MENU')
 def função(escolha):
     
     if escolha == 'Inserir Produto':
-        hotkey('alt', 'space', 'n')
+        # hotkey('alt', 'space', 'n')
         segunda_janela = ctk.CTkToplevel(primeira_janela)
         segunda_janela.geometry('500x300')
         segunda_janela.title('INSERIR DADOS')
@@ -63,15 +63,15 @@ def função(escolha):
             
             
             comando = f'INSERT INTO açaí(produto, valor, Identificar) VALUES ("{entrada_produto.get()}", {entrada_valor.get()},"{juntar}")'
-            cursor.execute(comando)
-            conexão.commit()
+            # cursor.execute(comando)
+            # conexão.commit()
             
             messagebox.showinfo('CONCLUÍDO', f'Seu produto foi inserido com sucesso!\nID CLIENTE: {juntar}')
             id.clear()
         def menu():
             segunda_janela.destroy()
-            win = pygetwindow.getWindowsWithTitle('MENU')[0]
-            win.restore()
+            # win = pygetwindow.getWindowsWithTitle('MENU')[0]
+            # win.restore()
 
         botão_enviar = ctk.CTkButton(segunda_janela,        
                                      text='Enviar', fg_color='transparent',hover_color='green',
@@ -91,7 +91,7 @@ def função(escolha):
 
 
     elif escolha == 'Deletar Produto':
-        hotkey('alt', 'space', 'n')
+        # hotkey('alt', 'space', 'n')
         terceira_janela = ctk.CTkToplevel()
         terceira_janela.geometry('500x300')
         terceira_janela.title('DELETAR PRODUTO')
@@ -101,8 +101,8 @@ def função(escolha):
 
         def dell():
             comando = f'DELETE FROM açaí WHERE Identificar = "{id_deletar.get()}"'
-            cursor.execute(comando)
-            conexão.commit()
+            # cursor.execute(comando)
+            # conexão.commit()
             messagebox.showinfo('DELETADO', 'Seu produto foi deletado com sucesso!')
 
         botão_deletar = ctk.CTkButton(terceira_janela, text='OK', fg_color='transparent', hover_color='green', command=dell)
@@ -112,8 +112,8 @@ def função(escolha):
         def menu():
             titulo = 'MENU'
             terceira_janela.destroy()
-            win = pygetwindow.getWindowsWithTitle(titulo)[0]
-            win.restore()
+            # win = pygetwindow.getWindowsWithTitle(titulo)[0]
+            # win.restore()
         botão_menu = ctk.CTkButton(terceira_janela, text='MENU', fg_color='transparent', hover_color='blue', command=menu)
         botão_menu.pack(padx=10, pady=10)
 
@@ -125,11 +125,7 @@ menu = ctk.CTkOptionMenu(frame, values= opção, button_hover_color=('green'), c
 menu.set('O QUE DESEJA FAZER?')
 menu.grid(row=0,column=0, padx=10, pady=10)
 
-
-
-
 # botão de sair da primeira pagina 
-
 def sair():
     primeira_janela.quit()
 
@@ -145,5 +141,5 @@ botão.grid(row=1, column=1, padx=20, pady=20)
 
 
 primeira_janela.mainloop()
-conexão.close()
-cursor.close()
+# conexão.close()
+# cursor.close()
